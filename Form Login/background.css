@@ -1,0 +1,20 @@
+body {
+    background: url('pepek.jpg') no-repeat center center fixed;
+        .css {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-size: large;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            background-color: rgb(12, 10, 10);
+            text-align: center;
+        }
+}

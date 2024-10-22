@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Rafli Eka Kurniawan</h1>
+            <div class="user-info">
+                <input type="text" class="search-bar" placeholder="Enter keywords">
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Total Posting</h3>
+                <p>71 Posting</p>
+                <small>39 Last month</small>
+            </div>
+            <div class="stat-card">
+                <h3>Total Pengunjung</h3>
+                <p>139 Pengunjung</p>
+                <small>34 Last month</small>
+            </div>
+            <div class="stat-card">
+                <h3>Total Komentar</h3>
+                <p>145 Komentar</p>
+                <small>48 Last month</small>
+            </div>
+            <div class="stat-card">
+                <h3>Total Like</h3>
+                <p>1152 Like</p>
+                <small>273 Last month</small>
+            </div>
+        </div>
+
+        <button class="add-post-btn">Add New Posts</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Programming Languages</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <a href="https://www.sololearn.com/certificates/CC-ZMLA45OL">Introduction to HTML</a>
+                    </td>
+                    <td>01-06-2024</td>
+                    <td><button class="edit-btn">Edit</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <a href="https://www.sololearn.com/certificates/CC-JJM1TVEI">Introduction to CSS</a>
+                    </td>
+                    <td>23-10-2024</td>
+                    <td><button class="edit-btn">Edit</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>
+                        <a href="https://www.sololearn.com/certificates/CC-IBFYEBZI">Introduction to JAVASCRIPT</a>
+                    </td>
+                    <td>14-11-2024</td>
+                    <td><button class="edit-btn">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="categories">
+        <h2>Top categories</h2>
+        <div class="category-item">
+            <span>Video Editor</span>
+            <span class="category-count">87</span>
+        </div>
+        <div class="category-item">
+            <span>Animation and Transition</span>
+            <span class="category-count">123</span>
+        </div>
+        <div class="category-item">
+            <span>Tutorials</span>
+            <span class="category-count">139</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
