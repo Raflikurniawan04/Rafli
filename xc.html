@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Penjualan</title>
+    <link rel="icon" href="assets/img/portfolio/unpam2.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+        }
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .sidebar-header img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .sidebar-header .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+        }
+        .sidebar h2 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: #555;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .dashboard-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .stat-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="user-info">
+                <div class="user-details">
+                    <p>Welcome, Rafli Eka Kurniawan</p>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active" data-section="overview">Grafik Penjualan</a></li>
+            <li><a href="#" data-section="sales-chart">Tabel Penjualan</a></li>
+            <li><a href="#" data-section="product-performance">Laporan Penjualan</a></li>
+            
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        <div id="overview" class="dashboard-section active">
+            <h1>Sales Overview</h1>
+            <div class="chart-container">
+                <canvas id="salesComparisonChart"></canvas>
+            </div>
+        </div>
+
+        <div id="sales-chart" class="dashboard-section" style="display:none;">
+            <h2>Monthly Sales Chart</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th rowspan="2">Tahun</th>
+                            <th colspan="12">Bulan</th>
+                        </tr>
+                        <tr>
+                            <th>Januari</th>
+                            <th>Februari</th>
+                            <th>Maret</th>
+                            <th>April</th>
+                            <th>Mei</th>
+                            <th>Juni</th>
+                            <th>Juli</th>
+                            <th>Agustus</th>
+                            <th>September</th>
+                            <th>Oktober</th>
+                            <th>November</th>
+                            <th>Desember</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2022</td>
+                            <td>4.017</td>
+                            <td>6.135</td>
+                            <td>7.091</td>
+                            <td>5.841</td>
+                            <td>5.036</td>
+                            <td>4.547</td>
+                            <td>3.467</td>
+                            <td>3.970</td>
+                            <td>6.313</td>
+                            <td>3.595</td>
+                            <td>9.207</td>
+                            <td>5.945</td>
+                        </tr>
+                        <tr>
+                            <td>2023</td>
+                            <td>2.416</td>
+                            <td>4.136</td>
+                            <td>7.935</td>
+                            <td>8.004</td>
+                            <td>9.505</td>
+                            <td>5.026</td>
+                            <td>6.108</td>
+                            <td>6.343</td>
+                            <td>9.404</td>
+                            <td>9.280</td>
+                            <td>9.287</td>
+                            <td>8.689</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="product-performance" class="dashboard-section" style="display:none;">
+            <h2>Product Performance</h2>
+            <p>Ringkasan laporan penjualan bulan ini: total pendapatan sebesar <strong>Rp 43,000,000</strong> dengan total produk terjual sebanyak <strong>430 unit</strong>.</p>
+        </div>
+    </div>
+
+    <script>
+        // Menu Navigation
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and hide all sections
+                document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.dashboard-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).style.display = 'block';
+            });
+        });
+
+        // Sales Chart
+        const salesChart = new Chart(document.getElementById('salesChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Monthly Sales',
+                    data: [12000, 19000, 15000, 22000, 18000, 25000],
+                    borderColor: 'blue',
+                    backgroundColor: 'rgba(0, 0, 255, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Sales Performance'
+                    }
+                }
+            }
+        });
+
+        // Inisialisasi Chart.js
+        const ctx = document.getElementById('salesComparisonChart').getContext('2d');
+        const salesComparisonChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                datasets: [
+                    {
+                        label: '2022',
+                        data: [4000, 5000, 7500, 6000, 5000, 3000, 4000, 5500, 7000, 3000, 9000, 7500],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    },
+                    {
+                        label: '2023',
+                        data: [3000, 4500, 7700, 8000, 9500, 5000, 5500, 6300, 9000, 8800, 9200, 8800],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Perbandingan Penjualan Tahun 2022 vs 2023'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Product Performance Chart
+        const productChart = new Chart(document.getElementById('productChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Product A', 'Product B', 'Product C', 'Product D'],
+                datasets: [{
+                    label: 'Units Sold',
+                    data: [120, 190, 150, 220],
+                    backgroundColor: ['blue', 'green', 'red', 'purple']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Product Sales Performance'
+                    }
+                }
+            }
+        });
+
+        // Revenue Breakdown Chart
+        const revenueChart = new Chart(document.getElementById('revenueChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Electronics', 'Clothing', 'Books', 'Accessories'],
+                datasets: [{
+                    data: [45, 25, 15, 15],
+                    backgroundColor: ['blue', 'green', 'red', 'purple']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Revenue by Category'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
